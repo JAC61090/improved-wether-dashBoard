@@ -19,3 +19,25 @@ function renderCities(){
         $("#cityList").prepend(a);
     } 
 }
+// This function pulls the city list array from local storage
+function initCityList() {
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
+    
+    if (storedCities !== null) {
+        cityList = storedCities;
+    }
+    
+    renderCities();
+    }
+
+// This function pull the current city into local storage to display the current weather forecast on reload
+function initWeather() {
+    var storedWeather = JSON.parse(localStorage.getItem("currentCity"));
+
+    if (storedWeather !== null) {
+        cityname = storedWeather;
+
+        displayWeather();
+        displayFiveDayForecast();
+    }
+}
